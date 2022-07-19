@@ -4,8 +4,9 @@ const flattenArr = (arr) => {
   const first = arr[0];
   const rest = arr.slice(1);
 
-  if (Array.isArray(first)) {
-    return flattenArr([...first, ...rest]);
-  }
-  return [first, ...flattenArr(rest)];
+  return Array.isArray(first)
+    ? flattenArr([...first, ...rest])
+    : [first, ...flattenArr(rest)];
 };
+
+console.log(flattenArr([1, 2, [3, 4], [[[[[5, 6]]]]]]));
